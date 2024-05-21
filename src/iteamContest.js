@@ -15,7 +15,13 @@ function CustomItemContext({ children }) {
     setTotal(total + price);
     setItem(item + 1);
   };
-
+  const resetValue = ()=>{
+     if(item===0 && total ===0){
+        return
+     }
+         setItem(0)
+         setTotal(0)
+  }
   const handleRemove = (price) => {
     if (total <= 0) {
       return;
@@ -25,7 +31,7 @@ function CustomItemContext({ children }) {
   };
 
   return (
-    <itemContext.Provider value={{ total, item, handleAdd, handleRemove }}>
+    <itemContext.Provider value={{ total, item, handleAdd, handleRemove,resetValue}}>
       {children}
     </itemContext.Provider>
   );
