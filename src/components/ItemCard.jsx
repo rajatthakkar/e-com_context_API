@@ -1,11 +1,30 @@
 import React from "react";
 import styles from "../styles/ItemCard.module.css";
-
+import { useContext } from "react";
+import { iteamContext } from "../iteamContest";
+import { totalContext } from "../totalContext";
 function ItemCard({ name, price }) {
-  const handleAdd = () => {};
+  const {item,setItem} = useContext(iteamContext)
+  const {total , setTotal} = useContext(totalContext)
+  console.log(price)
 
-  const handleRemove = () => {};
+  const handleAdd = () => {
 
+    setTotal(total+price)
+    setItem(item+1)
+
+  };
+
+  const handleRemove = () => {
+    if(total<=0){
+      return
+    }
+
+     setTotal((prevState) => prevState-price)
+     setItem(item-1)
+
+  };
+ 
   return (
     <div className={styles.itemCard}>
       <div className={styles.itemName}>{name}</div>
