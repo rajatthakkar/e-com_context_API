@@ -1,15 +1,12 @@
 import React from "react";
 import styles from "../styles/Total.module.css";
-import { useContext } from "react";
-import { iteamContext } from "../iteamContest";
-import { totalContext } from "../totalContext";
+import { useValue } from "../iteamContest";
+
 function Navbar() {
-  const {total , setTotal} = useContext(totalContext)
-  const value = useContext(iteamContext)
-  console.log(value)
+  const value = useValue();
   return (
-    <div className={total}>
-      <h1>Total : &#x20B9; {total}</h1>
+    <div className={styles.container}>
+      <h1>Total : &#x20B9; {value.total}</h1>
       <h1>Items: {value.item}</h1>
     </div>
   );
